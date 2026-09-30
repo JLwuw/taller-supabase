@@ -1,31 +1,22 @@
-import { Github } from "@medusajs/icons";
-import { Button, Heading } from "@modules/common/components/ui";
+import LocalizedClientLink from "@modules/common/components/localized-client-link"
+
 const Hero = () => {
   return (
-    <div className="h-[75vh] w-full border-b border-ui-border-base relative bg-ui-bg-subtle">
-      <div className="absolute inset-0 z-10 flex flex-col justify-center items-center text-center small:p-32 gap-6">
-        <span>
-          <Heading
-            level="h1"
-            className="text-3xl leading-10 text-ui-fg-base font-normal"
-          >
-            Ecommerce Starter Template
-          </Heading>
-          <Heading
-            level="h2"
-            className="text-3xl leading-10 text-ui-fg-subtle font-normal"
-          >
-            Powered by Medusa and Next.js
-          </Heading>
-        </span>
-        <a href="https://github.com/medusajs/dtc-starter" target="_blank">
-          <Button variant="secondary">
-            View on GitHub <Github />
-          </Button>
-        </a>
+    <section className="coffee-hero">
+      <div className="coffee-hero__image" />
+      <div className="coffee-hero__content content-container">
+        <p className="coffee-kicker">Cafe de especialidad · Ecuador</p>
+        <h1>El origen se siente en cada taza.</h1>
+        <p className="coffee-hero__copy">
+          Lotes pequenos, tostados con intencion y enviados frescos desde las
+          montanas de Ecuador.
+        </p>
+        <LocalizedClientLink href="/store" className="coffee-button">
+          Explorar la cosecha
+        </LocalizedClientLink>
       </div>
-    </div>
-  );
-};
+    </section>
+  )
+}
 
-export default Hero;
+export default Hero

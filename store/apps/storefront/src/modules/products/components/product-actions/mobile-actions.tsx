@@ -18,6 +18,8 @@ type MobileActionsProps = {
   updateOptions: (title: string, value: string) => void
   inStock?: boolean
   handleAddToCart: () => void
+  quantity: number
+  setQuantity: React.Dispatch<React.SetStateAction<number>>
   isAdding?: boolean
   show: boolean
   optionsDisabled: boolean
@@ -30,6 +32,8 @@ const MobileActions: React.FC<MobileActionsProps> = ({
   updateOptions,
   inStock,
   handleAddToCart,
+  quantity,
+  setQuantity,
   isAdding,
   show,
   optionsDisabled,
@@ -116,7 +120,27 @@ const MobileActions: React.FC<MobileActionsProps> = ({
                   <ChevronDown />
                 </div>
               </Button>}
-              <Button
+              <div className="flex items-center gap-3">
+                <div className="coffee-quantity__control">
+                  <button
+                    type="button"
+                    onClick={() => setQuantity((current) => Math.max(1, current - 1))}
+                    disabled={quantity <= 1 || isAdding}
+                    aria-label="Decrease quantity"
+                  >
+                    -
+                  </button>
+                  <span>{quantity}</span>
+                  <button
+                    type="button"
+                    onClick={() => setQuantity((current) => Math.min(variant?.inventory_quantity || 99, current + 1))}
+                    disabled={quantity >= (variant?.inventory_quantity || 99) || isAdding}
+                    aria-label="Increase quantity"
+                  >
+                    +
+                  </button>
+                </div>
+                <Button
                 onClick={handleAddToCart}
                 disabled={!inStock || !variant}
                 className="w-full"
@@ -128,7 +152,8 @@ const MobileActions: React.FC<MobileActionsProps> = ({
                   : !inStock
                   ? "Out of stock"
                   : "Add to cart"}
-              </Button>
+                </Button>
+              </div>
             </div>
           </div>
         </Transition>

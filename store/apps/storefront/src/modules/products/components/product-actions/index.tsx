@@ -37,6 +37,7 @@ export default function ProductActions({
   const searchParams = useSearchParams()
 
   const [options, setOptions] = useState<Record<string, string | undefined>>({})
+  const [quantity, setQuantity] = useState(1)
   const [isAdding, setIsAdding] = useState(false)
   const countryCode = useParams().countryCode as string
 
@@ -128,7 +129,7 @@ export default function ProductActions({
 
     await addToCart({
       variantId: selectedVariant.id,
-      quantity: 1,
+      quantity,
       countryCode,
     })
 
@@ -162,6 +163,37 @@ export default function ProductActions({
 
         <ProductPrice product={product} variant={selectedVariant} />
 
+        <div className="coffee-quantity" aria-label="Quantity">
+          <span className="coffee-quantity__label">Quantity</span>
+          <div className="coffee-quantity__control">
+            <button
+              type="button"
+              onClick={() => setQuantity((current) => Math.max(1, current - 1))}
+              disabled={quantity <= 1 || isAdding}
+              aria-label="Decrease quantity"
+            >
+              -
+            </button>
+            <span>{quantity}</span>
+            <button
+              type="button"
+              onClick={() =>
+                setQuantity((current) =>
+                  Math.min(selectedVariant?.inventory_quantity || 99, current + 1)
+                )
+              }
+              disabled={
+                isAdding ||
+                (!!selectedVariant?.manage_inventory &&
+                  quantity >= (selectedVariant.inventory_quantity || 0))
+              }
+              aria-label="Increase quantity"
+            >
+              +
+            </button>
+          </div>
+        </div>
+
         <Button
           onClick={handleAddToCart}
           disabled={
@@ -189,6 +221,8 @@ export default function ProductActions({
           updateOptions={setOptionValue}
           inStock={inStock}
           handleAddToCart={handleAddToCart}
+          quantity={quantity}
+          setQuantity={setQuantity}
           isAdding={isAdding}
           show={!inView}
           optionsDisabled={!!disabled || isAdding}

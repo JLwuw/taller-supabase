@@ -2,6 +2,309 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
+:root {
+  --coffee-ink: #211a16;
+  --coffee-cream: #f5f0e8;
+  --coffee-clay: #b85c38;
+  --coffee-line: #d8cbbb;
+}
+
+body {
+  background: var(--coffee-cream);
+  color: var(--coffee-ink);
+}
+
+.coffee-surface {
+  min-height: 100%;
+  background: var(--coffee-cream);
+  font-family: "Trebuchet MS", Verdana, sans-serif;
+}
+
+.coffee-panel {
+  border: 1px solid var(--coffee-line);
+  background: #fbf8f3;
+  box-shadow: 0 12px 30px rgba(66, 43, 31, 0.06);
+  padding-left: clamp(1rem, 3vw, 2rem);
+  padding-right: clamp(1rem, 3vw, 2rem);
+}
+
+.coffee-surface h1,
+.coffee-surface h2,
+.coffee-surface h3,
+.coffee-checkout-shell h1,
+.coffee-checkout-shell h2,
+.coffee-checkout-shell h3 {
+  color: var(--coffee-ink);
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+.coffee-checkout-shell {
+  font-family: "Trebuchet MS", Verdana, sans-serif;
+}
+
+.coffee-checkout-form {
+  padding: 0 clamp(1rem, 2vw, 2rem);
+}
+
+.coffee-checkout-form > div {
+  border: 1px solid var(--coffee-line);
+  background: #fbf8f3;
+  padding: clamp(1.25rem, 3vw, 2rem);
+  box-shadow: 0 10px 25px rgba(66, 43, 31, 0.045);
+}
+
+.coffee-checkout-form input,
+.coffee-checkout-form select,
+.coffee-checkout-form textarea {
+  border-color: #cdb9a7;
+  background: #fffdf9;
+  color: var(--coffee-ink);
+  font-family: "Trebuchet MS", Verdana, sans-serif;
+}
+
+.coffee-checkout-form input:focus,
+.coffee-checkout-form select:focus,
+.coffee-checkout-form textarea:focus {
+  border-color: var(--coffee-clay);
+  box-shadow: 0 0 0 2px rgba(184, 92, 56, 0.14);
+  outline: none;
+}
+
+.coffee-checkout-summary {
+  font-family: "Trebuchet MS", Verdana, sans-serif;
+}
+
+.coffee-checkout-summary .coffee-panel > h2 {
+  font-size: 1.7rem;
+}
+
+.coffee-checkout-summary input {
+  border-color: #cdb9a7;
+  background: #fffdf9;
+}
+
+.coffee-surface table {
+  color: var(--coffee-ink);
+}
+
+.coffee-surface table thead {
+  color: #765f4e;
+}
+
+.coffee-surface button,
+.coffee-checkout-shell button {
+  font-family: "Trebuchet MS", Verdana, sans-serif;
+}
+
+.coffee-quantity {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.7rem 0;
+  border-top: 1px solid var(--coffee-line);
+  border-bottom: 1px solid var(--coffee-line);
+}
+
+.coffee-quantity__label {
+  color: #6c584b;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.coffee-quantity__control {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid var(--coffee-line);
+  background: #fffaf3;
+}
+
+.coffee-quantity__control button,
+.coffee-quantity__control span {
+  display: grid;
+  min-width: 2.2rem;
+  height: 2.2rem;
+  place-items: center;
+  color: var(--coffee-ink);
+  font-size: 0.9rem;
+}
+
+.coffee-quantity__control button:hover:not(:disabled) {
+  background: #ead8c5;
+}
+
+.coffee-quantity__control button:disabled {
+  color: #bcaea3;
+  cursor: not-allowed;
+}
+
+.coffee-cart-popover {
+  overflow: hidden;
+  border: 1px solid #c9aa8c;
+  background: #fbf8f3;
+  box-shadow: 0 20px 45px rgba(38, 24, 17, 0.2);
+}
+
+.coffee-cart-popover__header {
+  background: #ead8c5;
+  border-bottom: 1px solid #c9aa8c;
+}
+
+.coffee-cart-popover__footer {
+  background: #f0e4d5;
+  border-top: 1px solid #c9aa8c;
+}
+
+.coffee-checkout-shell {
+  background: var(--coffee-cream);
+  color: var(--coffee-ink);
+}
+
+.coffee-checkout-header {
+  background: #ead8c5;
+  border-color: #c9aa8c;
+}
+
+.coffee-checkout-footer {
+  padding: 1.5rem;
+  background: #171311;
+  color: #b9aaa0;
+  font-size: 0.72rem;
+  letter-spacing: 0.05em;
+  text-align: center;
+}
+
+.coffee-hero {
+  min-height: min(720px, calc(100vh - 64px));
+  position: relative;
+  overflow: hidden;
+  background: #2c211b;
+  color: #fffaf3;
+}
+
+.coffee-hero__image {
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(90deg, rgba(25, 17, 13, 0.86), rgba(25, 17, 13, 0.18)), url("https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=2200&q=85");
+  background-size: cover;
+  background-position: center;
+}
+
+.coffee-hero__content {
+  position: relative;
+  z-index: 1;
+  min-height: min(720px, calc(100vh - 64px));
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+
+.coffee-kicker {
+  color: #efb18f;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.coffee-hero h1 {
+  max-width: 720px;
+  margin: 1rem 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(3.2rem, 7vw, 6.8rem);
+  font-weight: 400;
+  line-height: 0.98;
+}
+
+.coffee-hero__copy {
+  max-width: 470px;
+  color: #eadfd4;
+  font-size: 1.1rem;
+  line-height: 1.7;
+}
+
+.coffee-button {
+  margin-top: 2rem;
+  border: 1px solid #f5c4a7;
+  padding: 0.9rem 1.4rem;
+  color: #fffaf3;
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: background-color 180ms ease, color 180ms ease;
+}
+
+.coffee-button:hover {
+  background: #fffaf3;
+  color: var(--coffee-ink);
+}
+
+.coffee-footer {
+  background: #171311;
+  color: #f5eee6;
+}
+
+.coffee-footer__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  padding-top: 2.5rem;
+  padding-bottom: 2.5rem;
+}
+
+.coffee-footer__brand {
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+
+.coffee-footer p,
+.coffee-footer__details {
+  color: #b9aaa0;
+  font-size: 0.75rem;
+  line-height: 1.7;
+}
+
+.coffee-footer__details {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 0.5rem 1.5rem;
+  text-align: right;
+}
+
+.coffee-footer__details a:hover {
+  color: #f5eee6;
+}
+
+@media (max-width: 640px) {
+  .coffee-hero__content {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+
+  .coffee-hero h1 {
+    font-size: 3.6rem;
+  }
+
+  .coffee-footer__inner {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .coffee-footer__details {
+    justify-content: flex-start;
+    text-align: left;
+  }
+}
+
 @layer utilities {
   /* Chrome, Safari and Opera */
   .no-scrollbar::-webkit-scrollbar {

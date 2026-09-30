@@ -23,6 +23,9 @@ export default async function Home(props: {
   const { collections } = await listCollections({
     fields: "id, handle, title",
   })
+  const coffeeCollections = collections?.filter(
+    (collection) => collection.title === "Cafe de Origen"
+  )
 
   if (!collections || !region) {
     return null
@@ -33,7 +36,7 @@ export default async function Home(props: {
       <Hero />
       <div className="py-12">
         <ul className="flex flex-col gap-x-6">
-          <FeaturedProducts collections={collections} region={region} />
+          <FeaturedProducts collections={coffeeCollections} region={region} />
         </ul>
       </div>
     </>
