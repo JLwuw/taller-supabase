@@ -13,7 +13,10 @@
     "test": "turbo test",
     "backend:seed": "turbo seed --filter=@dtc/backend",
     "backend:dev": "turbo dev --filter=@dtc/backend",
-    "storefront:dev": "turbo dev --filter=@dtc/storefront"
+    "storefront:dev": "turbo dev --filter=@dtc/storefront",
+    "backend:region": "pnpm --dir apps/backend medusa exec ./src/scripts/add-ec-region.ts",
+    "backend:coffee": "pnpm --dir apps/backend medusa exec ./src/scripts/replace-with-coffee-catalog.ts",
+    "backend:coffee-stock": "pnpm --dir apps/backend medusa exec ./src/scripts/complete-coffee-pricing-and-stock.ts"
   },
   "devDependencies": {
     "@medusajs/eslint-plugin": "2.21.1",
