@@ -21,7 +21,7 @@ El storefront nunca usa `supabase-js`, Auth ni Storage de Supabase. Supabase se 
 ## Requisitos
 
 - Node.js 22 (`.nvmrc` contiene `22`)
-- pnpm 12
+- pnpm 10.34.0
 - PostgreSQL Supabase accesible mediante Session Pooler en el puerto `5432`
 
 ## Configuracion local
